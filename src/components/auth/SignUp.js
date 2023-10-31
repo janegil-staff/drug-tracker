@@ -13,6 +13,7 @@ import Card from "../UI/Card";
 
 import "./SignUp.css";
 import { AuthContext } from "../../context/auth-context";
+import LoadingSpinner from "../UI/LoadingSpinner";
 
 const SignUp = (props) => {
   const auth = useContext(AuthContext);
@@ -56,6 +57,7 @@ const SignUp = (props) => {
 
   return (
     <Card className="authentication">
+      {isLoading && <LoadingSpinner asOverlay />}
       <h2>Sign up</h2>
       <hr />
       <form onSubmit={authSubmitHandler}>
