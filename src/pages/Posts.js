@@ -1,6 +1,6 @@
 
-const Home = () => {
+const Posts = () => {
   return <p>Hello posts</p>
 }
 
-export default Home;
+export default Posts;

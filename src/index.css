@@ -1,13 +1,39 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@font-face {
+  font-family: "gotham-rounded-bold";
+  src: url("../public/fonts/Gotham-Rounded-Font/GothamRoundedBold.otf");
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@font-face {
+  font-family: "gotham-rounded-light";
+  src: url("../public/fonts/Gotham-Rounded-Font/GothamRoundedLight.otf");
+}
+
+@font-face {
+  font-family: "gotham-rounded-light-italic";
+  src: url("../public/fonts/Gotham-Rounded-Font/GothamRoundedLightItalic.otf");
+}
+
+@font-face {
+  font-family: "gotham-rounded-medium-italic";
+  src: url("../public/fonts/Gotham-Rounded-Font/GothamRoundedMediumItalic.otf");
+}
+
+@font-face {
+  font-family: "gotham-rounded-medium";
+  src: url("../public/fonts/Gotham-Rounded-Font/GothamRoundedMedium.otf");
+}
+
+body {
+  font-family: "gotham-rounded-medium";
+  color: rgb(224, 224, 224);
+}
+
+.error-text {
+  color: rgb(200, 0, 0);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.invalid {
+  border: 1px solid rgb(200, 0, 0);
 }
