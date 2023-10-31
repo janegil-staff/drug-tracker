@@ -1,6 +1,9 @@
+import SignUp from "../components/auth/SignUp";
 
 const Home = () => {
-  return <p>Helllo world</p>
+  return <div>
+    <SignUp />
+  </div>
 }
 
 export default Home;
