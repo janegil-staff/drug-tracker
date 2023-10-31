@@ -1,4 +1,5 @@
-import classes from "./NavBar.module.css";
+import { useContext } from "react";
+import "./NavBar.css";
 import {
   ChatRightDotsFill,
   TrophyFill,
@@ -6,37 +7,31 @@ import {
   PeopleFill,
   CashCoin,
 } from "react-bootstrap-icons";
+import { AuthContext } from "../../context/auth-context";
+import { useAuth } from "../../hooks/auth-hook";
 
-
-const Navbar = () => {
-
+const Navbar = (props) => {
+  const auth = useContext(AuthContext);
+  const logoutHandler = () => {
+    auth.logout();
+  };
   return (
-    <nav className={classes.navbar}>
+    <nav className={'navbar'}>
       <ul>
-        <li>
-          <a href="/">
-            <PeopleFill   />
-          </a>
+        <li className="nav-link">
+          <PeopleFill onClick={logoutHandler} />
         </li>
-        <li>
-          <a href="/">
-            <TrophyFill />
-          </a>
+        <li className="nav-link">
+          <TrophyFill />
         </li>
-        <li>
-          <a href="/">
-            <ChatRightDotsFill />
-          </a>
+        <li className="nav-link">
+          <ChatRightDotsFill />
         </li>
-        <li>
-          <a href="/">
-            <CashCoin />
-          </a>
+        <li className="nav-link">
+          <CashCoin />
         </li>
-        <li>
-          <a href="/">
-            <PersonFill />
-          </a>
+        <li className="nav-link">
+          <PersonFill />
         </li>
       </ul>
     </nav>
