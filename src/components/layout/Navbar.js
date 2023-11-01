@@ -1,4 +1,3 @@
-import { useContext } from "react";
 import "./NavBar.css";
 import {
   ChatRightDotsFill,
@@ -7,31 +6,41 @@ import {
   PeopleFill,
   CashCoin,
 } from "react-bootstrap-icons";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/auth-context";
-import { useAuth } from "../../hooks/auth-hook";
-
-const Navbar = (props) => {
+import { useContext } from "react";
+const Navbar = () => {
   const auth = useContext(AuthContext);
+
   const logoutHandler = () => {
     auth.logout();
   };
+
   return (
-    <nav className={'navbar'}>
+    <nav className={"navbar"}>
       <ul>
         <li className="nav-link">
           <PeopleFill onClick={logoutHandler} />
         </li>
         <li className="nav-link">
-          <TrophyFill />
+          <Link to="/trophies">
+            <TrophyFill />
+          </Link>
         </li>
         <li className="nav-link">
-          <ChatRightDotsFill />
+          <Link to="/posts">
+            <ChatRightDotsFill />
+          </Link>
         </li>
         <li className="nav-link">
-          <CashCoin />
+          <Link to="/entries">
+            <CashCoin />
+          </Link>
         </li>
         <li className="nav-link">
-          <PersonFill />
+          <Link to="/profile">
+            <PersonFill />
+          </Link>
         </li>
       </ul>
     </nav>

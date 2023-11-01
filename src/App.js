@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, BrowserRouter, useNavigation } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home";
 import TopHeader from "./components/layout/TopHeader";
@@ -6,6 +6,7 @@ import Navbar from "./components/layout/Navbar";
 import Posts from "./pages/Posts";
 import { AuthContext } from "./context/auth-context";
 import { useAuth } from "./hooks/auth-hook";
+import Entries from "./pages/Entries";
 
 function App() {
   const { token, login, logout, userId} = useAuth();
@@ -16,7 +17,8 @@ function App() {
   if (token) {
     routes = (
       <Routes>
-        <Route path="/" element={<Posts />} />
+        <Route path="/posts" element={<Posts />} />
+        <Route path="/entries" element={<Entries />} />
       </Routes>
     );
     navbar = <Navbar />;
@@ -39,10 +41,12 @@ function App() {
         logout: logout,
       }}
     >
+       <Router>
       {navbar}
-      <Router>
+     
         <main className={!token && "main"}>{routes}</main>
-      </Router>
+        </Router> 
+ 
     </AuthContext.Provider>
   );
 }
