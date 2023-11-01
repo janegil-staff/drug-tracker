@@ -7,7 +7,7 @@ const TopHeader = () => {
   return (
     <>
       <nav className={"nav-top"}>
-        <header>
+        <header className="nav-top__header">
           <h1>Drug Tracker</h1>
         </header>
       </nav>
