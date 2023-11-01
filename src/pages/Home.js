@@ -1,8 +1,8 @@
-import SignUp from "../components/auth/SignUp";
+import Auth from "../components/auth/Auth";
 
 const Home = () => {
   return <div>
-    <SignUp />
+    <Auth />
   </div>
 }
 

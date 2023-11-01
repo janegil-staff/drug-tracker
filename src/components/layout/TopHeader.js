@@ -1,12 +1,15 @@
-import classes from "./TopHeader.module.css";
+import { useContext, useState } from "react";
+import Button from "../FormElements/Button";
+
+import "./TopHeader.css";
+
 const TopHeader = () => {
   return (
     <>
-      <nav className={classes['nav-top']}>
+      <nav className={"nav-top"}>
         <header>
           <h1>Drug Tracker</h1>
         </header>
-        <button className={classes['login-link']}>Logg inn</button>
       </nav>
     </>
   );
