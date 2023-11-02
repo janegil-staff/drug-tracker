@@ -43,10 +43,12 @@ const EntryForm = () => {
         "POST",
         JSON.stringify({
           type: formState.inputs.type.value,
+          amount: formState.inputs.amount.value,
           price: formState.inputs.price.value,
         }),
         {
           "Content-Type": "application/json",
+          Authorization: 'Bearer ' + auth.token
         }
       );
       console.log(responseData);
@@ -61,7 +63,7 @@ const EntryForm = () => {
           value: event.target.value,
           isValid: event.target.value ? true : false,
         },
-        price: {
+        amount: {
           value: formState.inputs.amount.value,
           isValid: formState.inputs.amount.value ? true : false,
         },
@@ -70,7 +72,7 @@ const EntryForm = () => {
           isValid: formState.inputs.price.value ? true : false,
         },
       },
-      formState.inputs.type.isValid && formState.inputs.price.isValid
+      formState.inputs.type.isValid && formState.inputs.price.isValid && formState.inputs.amount.isValid
     );
   };
   return (
