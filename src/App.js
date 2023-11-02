@@ -7,7 +7,7 @@ import Posts from "./pages/Posts";
 import { AuthContext } from "./context/auth-context";
 import { useAuth } from "./hooks/auth-hook";
 import Entries from "./pages/Entries";
-
+import NewEntry from "./pages/NewEntry";
 function App() {
   const { token, login, logout, userId} = useAuth();
 
@@ -19,6 +19,7 @@ function App() {
       <Routes>
         <Route path="/posts" element={<Posts />} />
         <Route path="/entries" element={<Entries />} />
+        <Route path="/new/entry" element={<NewEntry />} />
       </Routes>
     );
     navbar = <Navbar />;
@@ -42,7 +43,8 @@ function App() {
       }}
     >
        <Router>
-      {navbar}
+      
+          {navbar}
      
         <main className={!token && "main"}>{routes}</main>
         </Router> 

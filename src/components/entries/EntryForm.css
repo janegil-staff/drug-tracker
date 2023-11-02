@@ -1,0 +1,6 @@
+.form-elements {
+  display: flex;
+}
+.form-element__item {
+  flex: 1
+}
