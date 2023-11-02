@@ -22,10 +22,14 @@ const EntryForm = () => {
         value: "Canabis",
         isValid: true,
       },
-      price: {
+      amount: {
         value: "",
         isValid: false,
       },
+      price: {
+        value: "",
+        isValid: false,
+      }
     },
     false
   );
@@ -33,22 +37,20 @@ const EntryForm = () => {
   const entrySubmitHandler = async (event) => {
     event.preventDefault();
 
-
     try {
       const responseData = await sendRequest(
-        REACT_APP_BACKEND_URL + '/entries',
-        'POST',
+        REACT_APP_BACKEND_URL + "/entries",
+        "POST",
         JSON.stringify({
           type: formState.inputs.type.value,
-          price: formState.inputs.price.value
+          price: formState.inputs.price.value,
         }),
         {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
         }
       );
-     console.log(responseData);
+      console.log(responseData);
     } catch (err) {}
-
   };
 
   const onOptionChangeHandler = (event) => {
@@ -57,12 +59,16 @@ const EntryForm = () => {
         ...formState.inputs,
         type: {
           value: event.target.value,
-          isValid: event.target.value ? true : false
+          isValid: event.target.value ? true : false,
+        },
+        price: {
+          value: formState.inputs.amount.value,
+          isValid: formState.inputs.amount.value ? true : false,
         },
         price: {
           value: formState.inputs.price.value,
-          isValid: formState.inputs.price.value ? true : false
-        }
+          isValid: formState.inputs.price.value ? true : false,
+        },
       },
       formState.inputs.type.isValid && formState.inputs.price.isValid
     );
@@ -83,7 +89,17 @@ const EntryForm = () => {
                 value="Ketamine"
               />
             </div>
-
+            <div className="form-element__item">
+              <Input
+                element="input"
+                id="amount"
+                type="number"
+                label="Amount"
+                validators={[VALIDATOR_REQUIRE()]}
+                errorText="Please enter a valid value."
+                onInput={inputHandler}
+              />
+            </div>
             <div className="form-element__item">
               <Input
                 element="input"
