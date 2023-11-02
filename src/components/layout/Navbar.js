@@ -6,7 +6,7 @@ import {
   PeopleFill,
   CashCoin,
   BarChartFill,
-  PlusCircleFill
+  PlusCircleFill,
 } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/auth-context";
@@ -22,7 +22,9 @@ const Navbar = () => {
     <nav className={"navbar"}>
       <ul>
         <li className="nav-link">
-          <BarChartFill onClick={logoutHandler} />
+          <Link to="/">
+            <BarChartFill onClick={logoutHandler} />
+          </Link>
         </li>
         <li className="nav-link">
           <Link to="/trophies">

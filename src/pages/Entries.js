@@ -1,10 +1,7 @@
+import UserEntries from "../components/entries/UserEntries"
 
 const Entries = () => {
-
-
-  return <div>
-    Entries
-  </div>
+  return <UserEntries />
 }
 
 export default Entries;

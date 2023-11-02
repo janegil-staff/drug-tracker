@@ -8,6 +8,7 @@ import { AuthContext } from "./context/auth-context";
 import { useAuth } from "./hooks/auth-hook";
 import Entries from "./pages/Entries";
 import NewEntry from "./pages/NewEntry";
+import Profile from "./pages/Profile";
 function App() {
   const { token, login, logout, userId} = useAuth();
 
@@ -17,6 +18,7 @@ function App() {
   if (token) {
     routes = (
       <Routes>
+         <Route path="/profile" element={<Profile />} />
         <Route path="/posts" element={<Posts />} />
         <Route path="/entries" element={<Entries />} />
         <Route path="/new/entry" element={<NewEntry />} />
