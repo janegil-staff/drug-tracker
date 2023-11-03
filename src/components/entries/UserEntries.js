@@ -6,6 +6,8 @@ import ErrorModal from "../UI/ErrorModal";
 import LoadingSpinner from "../UI/LoadingSpinner";
 import Timers from "./Timers";
 import "./UserEntry.css";
+import { getTotalValuesFromEntries } from "../../util/helpers";
+import EntryDetails from "./EntryDetails";
 
 const UserEntries = () => {
   const [loadedEntries, setLoadedEntries] = useState();
@@ -33,22 +35,30 @@ const UserEntries = () => {
 
   let hasEntries = false;
   let latestEntryDate;
+  let totalValues = [];
   if (loadedEntries && loadedEntries.length > 0) {
     hasEntries = true;
     latestEntryDate = loadedEntries[loadedEntries.length - 1].updatedAt;
+    totalValues = getTotalValuesFromEntries(loadedEntries);
   }
-console.log(hasEntries)
+  console.log(totalValues);
   return (
     <>
       {hasEntries && (
-        <div className="time-counter">
-          <Timers callQueuedTime={latestEntryDate} />
+        <div>
+          <div className="time-counter">
+            <Timers callQueuedTime={latestEntryDate} />
+          </div>
+
+          <div>
+            <EntryDetails values={totalValues} />
+          </div>
         </div>
       )}
 
       {!hasEntries && (
         <div className="time-counter">
-         <p>00:00:00:00</p> 
+          <p>00:00:00:00</p>
         </div>
       )}
 
@@ -60,13 +70,6 @@ console.log(hasEntries)
       )}
       {!isLoading && loadedEntries && (
         <p>
-          {loadedEntries.map((entry) => (
-            <div>
-              <p>{entry.type}</p>
-              <p>{entry.amount}</p>
-              <p>{entry.price}</p>
-            </div>
-          ))}
         </p>
       )}
     </>

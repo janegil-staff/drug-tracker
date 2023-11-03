@@ -11,3 +11,25 @@ export const TimeFormat = props => {
 
   return formatedCounter;
 }
+
+export const getTotalValuesFromEntries = data => {
+  let resultarr = [];
+  data.forEach((d) => {
+    data.forEach((d2) => {
+      //if both objects have same site and they are not the same object
+      if (d2.type == d.type && d != d2) {
+    
+        let result = {
+          type: d.type,
+          totalAmount: d2.amount + d.amount,
+          totalCost: d2.price + d.price,
+        };
+        //if result with same site is not already present in the results array
+        if (!resultarr.some((item) => item.type === result.type)) {
+          resultarr.push(result);
+        } 
+      }
+    });
+  });
+  return resultarr;
+};

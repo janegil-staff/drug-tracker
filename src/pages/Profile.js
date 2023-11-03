@@ -1,6 +1,6 @@
 
 const Profile = () => {
-  return <p>user profile</p>
+  return <p>Profile</p>
 }
 
 export default Profile;

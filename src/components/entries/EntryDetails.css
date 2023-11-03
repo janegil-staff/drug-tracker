@@ -1,0 +1,23 @@
+.entry-details__container {
+  text-align: center;
+  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.entry-details td, .entry-details th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.entry-details tr:nth-child(even){background-color: #f2f2f2;}
+
+.entry-details tr:hover {background-color: #ddd;}
+
+.entry-details th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
