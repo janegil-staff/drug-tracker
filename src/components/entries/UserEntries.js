@@ -4,6 +4,7 @@ import { AuthContext } from "../../context/auth-context";
 import { REACT_APP_BACKEND_URL } from "../../constants/env";
 import ErrorModal from "../UI/ErrorModal";
 import LoadingSpinner from "../UI/LoadingSpinner";
+import Timers from "./Timers";
 
 const UserEntries = () => {
   const [loadedEntries, setLoadedEntries] = useState();
@@ -27,10 +28,13 @@ const UserEntries = () => {
       } catch (err) {}
     };
     fetchUsers();
+
   }, [sendRequest]);
 
   return (
     <>
+    {loadedEntries && <Timers callQueuedTime={loadedEntries[0].updatedAt}/>}
+
       <ErrorModal error={error} onClear={clearError} />
       {isLoading && (
         <div className="center">
@@ -39,7 +43,6 @@ const UserEntries = () => {
       )}
       {!isLoading && loadedEntries && (
         <p>
-          {" "}
           {loadedEntries.map((entry) => (
             <div>
               <p>{entry.type}</p>
