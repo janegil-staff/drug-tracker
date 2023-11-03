@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { TimeFormat } from '../../util/helpers';
+import './UserEntry.css';
 
 const Timer = ({ callQueuedTime }) => {
   const [time, setTime] = useState(() => new Date().getTime());
@@ -12,7 +13,8 @@ const Timer = ({ callQueuedTime }) => {
       clearInterval(intervalId);
     }
   }, [callQueuedTime]);
-  return <p><TimeFormat time={time} /></p>;
+
+  return <p className="center"><TimeFormat time={time} /></p>;
 };
 
 export default Timer;

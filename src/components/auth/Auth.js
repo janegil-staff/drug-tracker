@@ -36,7 +36,9 @@ const Auth = () => {
   );
 
   const switchModeHandler = () => {
+
     if (!isLoginMode) {
+   
       setFormData(
         {
           ...formState.inputs,
@@ -46,6 +48,7 @@ const Auth = () => {
         formState.inputs.email.isValid && formState.inputs.password.isValid
       );
     } else {
+      console.log(formState);
       setFormData(
         {
           ...formState.inputs,
@@ -140,7 +143,7 @@ const Auth = () => {
             errorText="Please enter a valid password, at least 6 characters."
             onInput={inputHandler}
           />
-          <Button type="submit" disabled={!formState.isValid}>
+          <Button type="submit">
             {isLoginMode ? "LOGIN" : "SIGNUP"}
           </Button>
         </form>

@@ -5,6 +5,7 @@ import { REACT_APP_BACKEND_URL } from "../../constants/env";
 import ErrorModal from "../UI/ErrorModal";
 import LoadingSpinner from "../UI/LoadingSpinner";
 import Timers from "./Timers";
+import "./UserEntry.css";
 
 const UserEntries = () => {
   const [loadedEntries, setLoadedEntries] = useState();
@@ -28,12 +29,28 @@ const UserEntries = () => {
       } catch (err) {}
     };
     fetchUsers();
-
   }, [sendRequest]);
 
+  let hasEntries = false;
+  let latestEntryDate;
+  if (loadedEntries && loadedEntries.length > 0) {
+    hasEntries = true;
+    latestEntryDate = loadedEntries[loadedEntries.length - 1].updatedAt;
+  }
+console.log(hasEntries)
   return (
     <>
-    {loadedEntries && <Timers callQueuedTime={loadedEntries[0].updatedAt}/>}
+      {hasEntries && (
+        <div className="time-counter">
+          <Timers callQueuedTime={latestEntryDate} />
+        </div>
+      )}
+
+      {!hasEntries && (
+        <div className="time-counter">
+         <p>00:00:00:00</p> 
+        </div>
+      )}
 
       <ErrorModal error={error} onClear={clearError} />
       {isLoading && (
