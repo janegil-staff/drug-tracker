@@ -39,9 +39,9 @@ const UserEntries = () => {
   if (loadedEntries && loadedEntries.length > 0) {
     hasEntries = true;
     latestEntryDate = loadedEntries[loadedEntries.length - 1].updatedAt;
-    totalValues = getTotalValuesFromEntries(loadedEntries);
+    totalValues = (getTotalValuesFromEntries(loadedEntries));
   }
-  console.log(totalValues);
+ 
   return (
     <>
       {hasEntries && (

@@ -2,7 +2,7 @@ import "./EntryDetails.css";
 
 const EntryDetails = (props) => {
   const { values } = props;
-  console.log(values);
+
   return (
     <section>
       <table className="entry-details entry-details__container">
