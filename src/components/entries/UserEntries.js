@@ -9,6 +9,21 @@ import "./UserEntry.css";
 import { getTotalValuesFromEntries } from "../../util/helpers";
 import EntryDetails from "./EntryDetails";
 
+const monthNames = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
 const UserEntries = () => {
   const [loadedEntries, setLoadedEntries] = useState();
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
@@ -39,39 +54,51 @@ const UserEntries = () => {
   if (loadedEntries && loadedEntries.length > 0) {
     hasEntries = true;
     latestEntryDate = loadedEntries[loadedEntries.length - 1].updatedAt;
-    totalValues = (getTotalValuesFromEntries(loadedEntries));
+    totalValues = getTotalValuesFromEntries(loadedEntries);
   }
- 
+
   return (
     <>
-      {hasEntries && (
-        <div>
-          <div className="time-counter">
-            <Timers callQueuedTime={latestEntryDate} />
+      <section className="over-view_section">
+        <div className="overview-header">
+          <h1>You everview</h1>
+          <div className="animated-clock">
+            <img width="200" src="/images/giphy.gif" alt="clock" />
           </div>
+        </div>
 
+        {hasEntries && (
           <div>
-            <EntryDetails values={totalValues} />
+            <div className="time-counter">
+              <Timers callQueuedTime={latestEntryDate} />
+            </div>
+            <div className="last-entry">
+              <p>
+                Last entry was {new Date(latestEntryDate).getDate()}.{" "}
+                {monthNames[new Date(latestEntryDate).getMonth()]}{" "}
+                {new Date(latestEntryDate).getFullYear()}
+              </p>
+            </div>
+            <div>
+              <EntryDetails values={totalValues} />
+            </div>
           </div>
-        </div>
-      )}
+        )}
 
-      {!hasEntries && (
-        <div className="time-counter">
-          <p>00:00:00:00</p>
-        </div>
-      )}
+        {!hasEntries && (
+          <div className="time-counter">
+            <p>00:00:00:00</p>
+          </div>
+        )}
 
-      <ErrorModal error={error} onClear={clearError} />
-      {isLoading && (
-        <div className="center">
-          <LoadingSpinner />
-        </div>
-      )}
-      {!isLoading && loadedEntries && (
-        <p>
-        </p>
-      )}
+        <ErrorModal error={error} onClear={clearError} />
+        {isLoading && (
+          <div className="center">
+            <LoadingSpinner />
+          </div>
+        )}
+        {!isLoading && loadedEntries && <p></p>}
+      </section>
     </>
   );
 };

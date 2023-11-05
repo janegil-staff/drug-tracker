@@ -13,7 +13,7 @@ export const TimeFormat = (props) => {
   let second =
     date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
 
-  const formatedCounter = day + ":" + hour + ":" + minute + ":" + second;
+  const formatedCounter = day + " : " + hour + " : " + minute + " : " + second;
 
   return formatedCounter;
 };
@@ -54,3 +54,12 @@ export const getTotalValuesFromEntries = (data) => {
   })
   return resultarr;
 };
+
+export const getTotalSum = data => {
+  let sum = 0;
+  data.forEach(d => {
+    sum += d.totalCost
+  });
+  
+  return sum;
+}

@@ -4,3 +4,9 @@
 .form-element__item {
   flex: 1
 }
+.entries-total-sum {
+  text-align: center;
+}
+.entries-detail-hr {
+  padding: 16px;
+}

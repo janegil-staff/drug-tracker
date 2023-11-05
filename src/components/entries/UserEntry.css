@@ -1,5 +1,18 @@
+.over-view_section{
+  margin-bottom:100px;
+}
 .time-counter {
   font-size: 32px;
-  padding: 32px;
   text-align: center;
+}
+.last-entry {
+  text-align: center;
+  padding-bottom: 16px;
+}
+.overview-header {
+  text-align: center;
+  padding-top: 16px;
+}
+.animated-clock g{
+
 }
